@@ -15,7 +15,7 @@ function Shop() {
     }, []);
 
     return (
-        <main className="flex">
+        <main className="">
             <Products products={products} />
             <Orders />
         </main>

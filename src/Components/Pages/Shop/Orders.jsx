@@ -2,10 +2,10 @@ import React from 'react';
 
 function Orders() {
     return (
-        <div className="w-[200px]">
+        <section className="fixed w-[200px] bg-orange-500 h-full right-0 top-[67px]">
             <h1>My Orders</h1>
             <h3>Total orders 0</h3>
-        </div>
+        </section>
     );
 }
 
