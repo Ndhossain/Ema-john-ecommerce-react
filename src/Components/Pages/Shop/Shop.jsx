@@ -6,9 +6,12 @@ function Shop() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('../../../Assets/Database/products.json')
+        fetch(
+            'https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json'
+        )
             .then((res) => res.json())
-            .then((data) => console.log(data));
+            .then((data) => setProducts([...data]))
+            .catch((error) => console.log(error));
     }, []);
 
     return (
