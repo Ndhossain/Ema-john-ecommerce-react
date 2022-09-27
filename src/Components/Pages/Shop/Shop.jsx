@@ -4,6 +4,8 @@ import Products from './Products';
 
 function Shop() {
     const [products, setProducts] = useState([]);
+    const [cart, setCart] = useState([]);
+    console.log(cart);
 
     useEffect(() => {
         fetch(
@@ -14,10 +16,12 @@ function Shop() {
             .catch((error) => console.log(error));
     }, []);
 
+    const addToCart = (product) => setCart([...cart, product]);
+
     return (
         <main className="">
-            <Products products={products} />
-            <Orders />
+            <Products products={products} addToCart={addToCart} />
+            <Orders cart={cart} />
         </main>
     );
 }
