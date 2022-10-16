@@ -4,6 +4,8 @@ import About from './Components/Pages/About/About';
 import Inventory from './Components/Pages/Inventory/Inventory';
 import OrderPage from './Components/Pages/Orders/OrderPage';
 import Shop from './Components/Pages/Shop/Shop';
+import Signin from './Components/Pages/signin/Signin';
+import Signup from './Components/Pages/Signup/Signup';
 import cartAndProductLoader from './Components/utilities/cartAndProductLoader';
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
                 },
                 { path: '/about', element: <About /> },
                 { path: '/inventory', element: <Inventory /> },
+                { path: '/signin', element: <Signin /> },
+                { path: '/signup', element: <Signup /> },
             ],
         },
     ]);

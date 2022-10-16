@@ -14,7 +14,9 @@ function Main() {
         <CartContext.Provider value={{ cart, setCart }}>
             <ProductsContext.Provider value={products}>
                 <Nav />
-                <Outlet />
+                <main className="mt-20">
+                    <Outlet />
+                </main>
             </ProductsContext.Provider>
         </CartContext.Provider>
     );
