@@ -6,10 +6,11 @@ export const ProductsContext = createContext([]);
 export const CartContext = createContext([]);
 
 function Main() {
-    const [cart, setCart] = useState([]);
-    const products = JSON.parse(useLoaderData());
+    const { products, initialCart } = useLoaderData();
+    const [cart, setCart] = useState([...initialCart]);
 
     return (
+        // eslint-disable-next-line react/jsx-no-constructed-context-values
         <CartContext.Provider value={{ cart, setCart }}>
             <ProductsContext.Provider value={products}>
                 <Nav />

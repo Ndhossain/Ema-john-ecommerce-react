@@ -10,10 +10,7 @@ function App() {
     const router = createBrowserRouter([
         {
             path: '/',
-            loader: () =>
-                fetch(
-                    'https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json'
-                ),
+            loader: cartAndProductLoader,
             element: <Main />,
             children: [
                 {
