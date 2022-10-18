@@ -14,7 +14,7 @@ function Main() {
         <CartContext.Provider value={{ cart, setCart }}>
             <ProductsContext.Provider value={products}>
                 <Nav />
-                <main className="mt-20">
+                <main style={{ height: 'calc(100vh - 80px)' }} className="mt-20 mx-5">
                     <Outlet />
                 </main>
             </ProductsContext.Provider>

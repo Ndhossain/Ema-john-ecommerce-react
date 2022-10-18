@@ -3,6 +3,8 @@ import Main from './Components/Main/Main';
 import About from './Components/Pages/About/About';
 import Inventory from './Components/Pages/Inventory/Inventory';
 import OrderPage from './Components/Pages/Orders/OrderPage';
+import Privateroute from './Components/Pages/private/Privateroute';
+import Shipping from './Components/Pages/shipping/Shipping';
 import Shop from './Components/Pages/Shop/Shop';
 import Signin from './Components/Pages/signin/Signin';
 import Signup from './Components/Pages/Signup/Signup';
@@ -32,6 +34,14 @@ function App() {
                 { path: '/inventory', element: <Inventory /> },
                 { path: '/signin', element: <Signin /> },
                 { path: '/signup', element: <Signup /> },
+                {
+                    path: '/shipping',
+                    element: (
+                        <Privateroute>
+                            <Shipping />
+                        </Privateroute>
+                    ),
+                },
             ],
         },
     ]);

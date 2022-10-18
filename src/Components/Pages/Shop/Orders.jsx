@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Orders({ cart }) {
     const priceReduce = (type) => cart.reduce((prev, curr) => prev + curr[type], 0);
@@ -26,6 +27,9 @@ function Orders({ cart }) {
                 <h1 className="flex justify-between text-lg">
                     <span>Grand Total</span> <span> ${total.toFixed(2)}</span>
                 </h1>
+                <Link to="/shipping" className="block text-center bg-white rounded mt-4 py-2">
+                    Proceed Shipping
+                </Link>
             </div>
         </section>
     );

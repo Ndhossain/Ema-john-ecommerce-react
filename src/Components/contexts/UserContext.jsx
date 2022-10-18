@@ -9,27 +9,27 @@ import {
     updateProfile,
 } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
-import app from '../../firebase.config';
+import '../../firebase.config';
 
 export const AuthContext = createContext();
 
-const auth = getAuth(app);
-
 function UserContext({ children }) {
     const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState({ name: 'nahid' });
+    const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        const auth = getAuth();
         const unsub = onAuthStateChanged(auth, (currentUser) => {
             setUser({ ...currentUser });
             setLoading(false);
         });
 
-        return unsub;
+        return () => unsub();
     }, []);
     // signup fuctinality
     const signUpUser = async (email, password, name) => {
+        const auth = getAuth();
         try {
             setError(null);
             await createUserWithEmailAndPassword(auth, email, password);
@@ -42,17 +42,24 @@ function UserContext({ children }) {
         }
     };
     // signin functionality
-    const signInUser = (email, password) => {
-        try {
-            setError(null);
-            return signInWithEmailAndPassword(auth, email, password);
-        } catch (err) {
-            setError(err);
-            return err;
-        }
+    const signInUser = async (email, password, navigate) => {
+        setLoading(true);
+        const auth = getAuth();
+        setError(null);
+        signInWithEmailAndPassword(auth, email, password)
+            .then(() => {
+                console.log(auth.currentUser);
+                navigate();
+            })
+            .catch((err) => {
+                setError(err);
+            });
     };
     // signout functionality
-    const signOutUser = () => signOut(auth);
+    const signOutUser = () => {
+        const auth = getAuth();
+        signOut(auth);
+    };
     return (
         <AuthContext.Provider value={{ user, signUpUser, error, signInUser, signOutUser }}>
             {!loading && children}
